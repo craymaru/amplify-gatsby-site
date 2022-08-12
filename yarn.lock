@@ -2438,6 +2438,11 @@
     escape-string-regexp "^2.0.0"
     lodash.deburr "^4.1.0"
 
+"@stripe/stripe-js@^1.35.0":
+  version "1.35.0"
+  resolved "https://registry.yarnpkg.com/@stripe/stripe-js/-/stripe-js-1.35.0.tgz#f809e2e5e0a00f01aa12e8aed0b89d27728c05c0"
+  integrity sha512-UIuzpbJqgXCTvJhY/aZYvBtaKdMfQgnIv6kkLlfRJ9smZcC4zoPvq3j7k9wobYI+idHAWP4BRiPnqA8lvzJCtg==
+
 "@swc/helpers@^0.4.2":
   version "0.4.6"
   resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.4.6.tgz#574672fe0018731893b6a7b1741d336863fa09a1"

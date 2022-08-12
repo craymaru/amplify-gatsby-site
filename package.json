@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "@stripe/stripe-js": "^1.35.0",
     "gatsby": "^4.20.0",
     "gatsby-plugin-image": "^2.20.0",
     "gatsby-plugin-manifest": "^4.20.0",
