@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "amplifygatsbysiteLambdaRole4b259553",
+            "gatsbysiteLambdaRoleeb14c300",
             {
               "Fn::Join": [
                 "",
                 [
-                  "amplifygatsbysiteLambdaRole4b259553",
+                  "gatsbysiteLambdaRoleeb14c300",
                   "-",
                   {
                     "Ref": "env"

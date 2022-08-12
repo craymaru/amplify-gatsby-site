@@ -1,4 +1,11 @@
 {
+  "function": {
+    "stripeCheckout": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
   "api": {
     "stripeAPI": {
       "service": "API Gateway",
@@ -13,14 +20,6 @@
           ]
         }
       ]
-    }
-  },
-  "function": {
-    "stripeCheckout": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": []
     }
   }
 }

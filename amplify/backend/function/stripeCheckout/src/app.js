@@ -23,6 +23,24 @@ app.use(function (req, res, next) {
   next()
 })
 
+/**********************
+ * Example get method *
+ **********************/
+
+app.get("/checkout", function (req, res) {
+  // Add your code here
+  res.json({ success: "get call succeed!", url: req.url })
+})
+
+app.get("/checkout/*", function (req, res) {
+  // Add your code here
+  res.json({ success: "get call succeed!", url: req.url })
+})
+
+/****************************
+ * Example post method *
+ ****************************/
+
 app.post("/checkout", async function (req, res) {
   try {
     const session = await stripe.checkout.sessions.create({
@@ -43,6 +61,34 @@ app.post("/checkout", async function (req, res) {
   } catch (err) {
     res.json(err)
   }
+})
+
+/****************************
+ * Example put method *
+ ****************************/
+
+app.put("/checkout", function (req, res) {
+  // Add your code here
+  res.json({ success: "put call succeed!", url: req.url, body: req.body })
+})
+
+app.put("/checkout/*", function (req, res) {
+  // Add your code here
+  res.json({ success: "put call succeed!", url: req.url, body: req.body })
+})
+
+/****************************
+ * Example delete method *
+ ****************************/
+
+app.delete("/checkout", function (req, res) {
+  // Add your code here
+  res.json({ success: "delete call succeed!", url: req.url })
+})
+
+app.delete("/checkout/*", function (req, res) {
+  // Add your code here
+  res.json({ success: "delete call succeed!", url: req.url })
 })
 
 app.listen(3000, function () {
