@@ -10,6 +10,14 @@
       "StackName": "amplify-amplifygatsbysite-dev-194434",
       "StackId": "arn:aws:cloudformation:ap-northeast-1:236205379386:stack/amplify-amplifygatsbysite-dev-194434/c2298410-1a2b-11ed-abf1-0e21ecb15da5",
       "AmplifyAppId": "d3obbdyxh4uozg"
+    },
+    "categories": {
+      "function": {
+        "stripeCheckout": {
+          "deploymentBucketName": "amplify-amplifygatsbysite-dev-194434-deployment",
+          "s3Key": "amplify-builds/stripeCheckout-59314947706a6d593032-build.zip"
+        }
+      }
     }
   }
 }
