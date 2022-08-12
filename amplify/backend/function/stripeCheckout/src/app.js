@@ -6,6 +6,7 @@ or in the "license" file accompanying this file. This file is distributed on an 
 See the License for the specific language governing permissions and limitations under the License.
 */
 
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 const express = require("express")
 const bodyParser = require("body-parser")
 const awsServerlessExpressMiddleware = require("aws-serverless-express/middleware")
@@ -22,60 +23,26 @@ app.use(function (req, res, next) {
   next()
 })
 
-/**********************
- * Example get method *
- **********************/
-
-app.get("/checkout", function (req, res) {
-  // Add your code here
-  res.json({ success: "get call succeed!", url: req.url })
-})
-
-app.get("/checkout/*", function (req, res) {
-  // Add your code here
-  res.json({ success: "get call succeed!", url: req.url })
-})
-
-/****************************
- * Example post method *
- ****************************/
-
-app.post("/checkout", function (req, res) {
-  // Add your code here
-  res.json({ success: "post call succeed!", url: req.url, body: req.body })
-})
-
-app.post("/checkout/*", function (req, res) {
-  // Add your code here
-  res.json({ success: "post call succeed!", url: req.url, body: req.body })
-})
-
-/****************************
- * Example put method *
- ****************************/
-
-app.put("/checkout", function (req, res) {
-  // Add your code here
-  res.json({ success: "put call succeed!", url: req.url, body: req.body })
-})
-
-app.put("/checkout/*", function (req, res) {
-  // Add your code here
-  res.json({ success: "put call succeed!", url: req.url, body: req.body })
-})
-
-/****************************
- * Example delete method *
- ****************************/
-
-app.delete("/checkout", function (req, res) {
-  // Add your code here
-  res.json({ success: "delete call succeed!", url: req.url })
-})
-
-app.delete("/checkout/*", function (req, res) {
-  // Add your code here
-  res.json({ success: "delete call succeed!", url: req.url })
+app.post("/checkout", async function (req, res) {
+  try {
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      line_items: [
+        {
+          price: req.body.priceId, // The priceId of the product being purchased, retrievable from the Stripe dashboard
+          quantity: req.body.quantity,
+        },
+      ],
+      mode: "subscription",
+      client_reference_id: req.body.client_reference_id,
+      success_url:
+        "https://example.com/success?session_id={CHECKOUT_SESSION_ID}", // The URL the customer will be directed to after the payment or subscription creation is successful.
+      cancel_url: "https://example.com/cancel", // The URL the customer will be directed to if they decide to cancel payment and return to your website.
+    })
+    res.json(session)
+  } catch (err) {
+    res.json(err)
+  }
 })
 
 app.listen(3000, function () {
