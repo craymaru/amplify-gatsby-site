@@ -5,6 +5,7 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import * as styles from "../components/index.module.css"
+import CheckoutButton from "../components/CheckoutButton"
 
 const links = [
   {
@@ -85,6 +86,10 @@ const IndexPage = () => (
       <h1>
         Welcome to <b>Gatsby!</b>
       </h1>
+
+      <div style={{ padding: "40px" }}>
+        <CheckoutButton></CheckoutButton>
+      </div>
       <p className={styles.intro}>
         <b>Example pages:</b>{" "}
         {samplePageLinks.map((link, i) => (
